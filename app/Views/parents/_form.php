@@ -86,10 +86,10 @@
             fetch(`https://viacep.com.br/ws/${postalcode}/json/`)
             .then(response =>response.json())
             .then(data => {
-                document.getElementById('street').value = data.logradouro;
-                document.getElementById('district').value = data.bairro;
-                document.getElementById('city').value = data.localidade;
-                document.getElementById('state').value = data.uf;
+                document.getElementById('street').value = data.logradouro ?? '';
+                document.getElementById('district').value = data.bairro ?? '';
+                document.getElementById('city').value = data.localidade ?? '';
+                document.getElementById('state').value = data.uf ?? '';
             })
             .catch(error => {
                 console.log(`Erro ao consultar o CEP: ${erro}`);
