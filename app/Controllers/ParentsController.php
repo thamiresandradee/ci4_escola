@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Entities\Address;
 use App\Entities\ParentStudent;
+use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class ParentsController extends BaseController
@@ -26,5 +27,10 @@ class ParentsController extends BaseController
         ]);
 
         return view(self::VIEWS_DIRECTORY . 'new', $this->dataToView);
+    }
+
+    public function create(): RedirectResponse
+    {
+        dd($this->request->getPost());
     }
 }
