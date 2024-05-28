@@ -18,13 +18,14 @@
   <!-- CSS Files -->
   <link id="pagestyle" href="<?php echo base_url(''); ?>assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
 
-  <?php echo $this->renderSection('css'); ?>
-
   <style>
     .min-height-view {
       min-height: calc(100vh - (64px + 96px));
     }
-  </style>
+    </style>
+    <link href="<?php echo base_url(''); ?>assets/toastify/toastify.min.css" rel="stylesheet" />
+
+    <?php echo $this->renderSection('css'); ?>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -632,7 +633,9 @@
   </script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="<?php echo base_url(''); ?>assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+  <script src="<?php echo base_url(''); ?>assets/toastify/toastify-js.js"></script>
 
+  <<?php echo $this->include('layouts/_sessions_messages'); ?>
   <?php echo $this->renderSection('js'); ?>
 </body>
 
