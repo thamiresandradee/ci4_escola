@@ -24,6 +24,7 @@ class ParentsController extends BaseController
     public function index(): string
     {
         $this->dataToView['title'] = 'Gerenciar os responsáveis';
+        $this->dataToView['parents'] = $this->parentModel->orderBy('name', 'ASC')->findAll();
 
         return view(self::VIEWS_DIRECTORY . 'index', $this->dataToView);
     }
