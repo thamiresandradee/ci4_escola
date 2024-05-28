@@ -17,7 +17,6 @@
                 <a href="<?php echo route_to('parents.new') ?>" class="btn mb-0"><i class="fas fa-arrow-left"></i></a>
             </div>
             <div class="card-body">
-
                 <?php echo form_open(
                     action: route_to('parents.create'),
                     attributes: ['class' => 'form-floating'],

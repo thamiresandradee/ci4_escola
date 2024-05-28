@@ -79,4 +79,14 @@ class ParentsController extends BaseController
             ->route('parents')
             ->with('success', 'Cadastro realizado com sucesso');
     }
+
+    public function show(string $code): string
+    {
+        $parent = $this->parentModel->getByCode(code: $code, withAddress: true);
+
+        $this->dataToView['title'] = 'Detalhes do responsável';
+        $this->dataToView['parent'] = $parent;
+
+        return view(self::VIEWS_DIRECTORY . 'show', $this->dataToView);
+    }
 }
