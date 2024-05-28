@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Entities\Address;
 use App\Entities\ParentStudent;
+use App\Models\ParentModel;
 use App\Validation\AddressValidation;
 use App\Validation\ParentValidation;
 use CodeIgniter\HTTP\RedirectResponse;
@@ -13,6 +14,12 @@ use CodeIgniter\HTTP\ResponseInterface;
 class ParentsController extends BaseController
 {
     private const VIEWS_DIRECTORY = 'parents/';
+    private ParentModel $parentModel;
+
+    public function __construct()
+    {
+        $this->parentModel = model(ParentModel::class);
+    }
     
     public function index(): string
     {
@@ -44,6 +51,7 @@ class ParentsController extends BaseController
                 ->with('errors', $this->validator->getErrors());
         }
 
+        // instanciamos o responsável com os dados validados
         $parent = new ParentStudent($this->validator->getValidated());
 
         $rules = (new AddressValidation)->getRules();
@@ -55,10 +63,19 @@ class ParentsController extends BaseController
                 ->with('errors', $this->validator->getErrors());
         }
 
+        // instanciamos o endereço do responsável com os dados validados
         $address = new Address($this->validator->getValidated());
 
-        dd($address);
+        $success = $this->parentModel->store(parent: $parent, address: $address);
 
-        exit('VALIDADO');
+        if(!$success){
+            return redirect()
+                ->back()
+                ->with('danger', 'Ocorreu um erro nja criação do responsável');
+        }
+
+        return redirect()
+            ->route('parents')
+            ->with('success', 'Cadastro realizado com sucesso');
     }
 }
