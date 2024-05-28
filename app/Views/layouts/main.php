@@ -345,6 +345,7 @@
     <!-- End Navbar -->
     <div class="container-fluid py-4">
       <div class="min-height-view">
+        <?php echo validation_list_errors(template: '_list_custom_errors');?>
         <?php echo $this->renderSection('content'); ?>
       </div>
       <footer class="footer pt-3  ">

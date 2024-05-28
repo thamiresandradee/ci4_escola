@@ -29,7 +29,7 @@ class ParentValidation
                     'is_unique' => 'Esse CPF já existe',
                 ]
             ],
-            'cpf' => [
+            'email' => [
                 'rules' => "required|max_length[128]|valid_email|is_unique[parents.email,id.{$id}]",
                 'errors' => [
                     'required' => 'Informe o E-mail válido',
