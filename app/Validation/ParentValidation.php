@@ -2,8 +2,12 @@
 
 namespace App\Validation;
 
+use App\Traits\CPFValidationTrait;
+
 class ParentValidation
 {
+    use CPFValidationTrait;
+
     public function getRules(?int $id = null): array
     {
         return [
@@ -18,7 +22,7 @@ class ParentValidation
                 ]
             ],
             'cpf' => [
-                'rules' => "required|exact_length[14]|is_unique[parents.cpf,id.{$id}]", //VALIDAR CPF
+                'rules' => "required|exact_length[14]|validaCPF|is_unique[parents.cpf,id.{$id}]",
                 'errors' => [
                     'required' => 'Informe o CPF válido',
                     'exact_length' => 'O CPF precisa ter exatamente 14 caractéres',
