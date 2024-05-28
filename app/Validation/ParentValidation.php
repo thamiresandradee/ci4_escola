@@ -38,11 +38,10 @@ class ParentValidation
                 ]
             ],
             'phone' => [
-                'rules' => "required|max_length[15]|valid_email|is_unique[parents.phone,id.{$id}]",
+                'rules' => "required|max_length[15]|is_unique[parents.phone,id.{$id}]",
                 'errors' => [
                     'required' => 'Informe o telefone',
-                    'exact_length' => 'O E-mail precisa ter exatamente 128 caractéres',
-                    'is_unique' => 'Esse E-mail já existe',
+                    'is_unique' => 'Esse telefone já existe',
                 ]
             ],
         ];

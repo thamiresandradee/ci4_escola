@@ -15,8 +15,8 @@
 
     <div class="col-md-6">
         <div class="form-floating mb-3">
-            <input type="tel" class="form-control phone" placeholder="Telefone" id="telefone" name="telefone" value="<?php echo old('telefone', $parent->telefone); ?>">
-            <label for="telefone">Telefone</label>
+            <input type="tel" class="form-control phone" placeholder="phone" id="phone" name="phone" value="<?php echo old('phone', $parent->phone); ?>">
+            <label for="phone">Telefone</label>
         </div>
     </div>
     <div class="col-md-6">
