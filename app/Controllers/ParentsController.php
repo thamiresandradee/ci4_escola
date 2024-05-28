@@ -71,7 +71,7 @@ class ParentsController extends BaseController
         if(!$success){
             return redirect()
                 ->back()
-                ->with('danger', 'Ocorreu um erro nja criação do responsável');
+                ->with('danger', 'Ocorreu um erro na criação do responsável');
         }
 
         return redirect()
